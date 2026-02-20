@@ -1,6 +1,7 @@
 import { Prisma } from '@prisma/client';
 
-const createUser = async (payload: Prisma.$UserPayload) => {
+const createUser = async (payload: Prisma.UserCreateInput) => {
+  console.log(payload);
   return 'Ok';
 };
 
