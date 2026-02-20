@@ -1,0 +1,23 @@
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  username      String         @unique
+  password      String
+  status        UserStatus     @default(ACTIVE)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  authProviders AuthProvider[]
+
+  @@map("users")
+}
+
+model AuthProvider {
+  id         String       @id @default(uuid())
+  provider   ProviderType
+  providerId String
+  userId     String
+  user       User         @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerId])
+  @@map("auth_providers")
+}

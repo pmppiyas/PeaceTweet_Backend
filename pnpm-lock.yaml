@@ -12,8 +12,8 @@ importers:
         specifier: ^7.3.0
         version: 7.3.0
       '@prisma/client':
-        specifier: ^7.3.0
-        version: 7.3.0(prisma@7.3.0(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
+        specifier: ^7.4.1
+        version: 7.4.1(prisma@7.3.0(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
       compression:
         specifier: ^1.8.1
         version: 1.8.1
@@ -23,9 +23,6 @@ importers:
       cors:
         specifier: ^2.8.6
         version: 2.8.6
-      dotenv:
-        specifier: ^17.2.3
-        version: 17.2.3
       express:
         specifier: ^5.2.1
         version: 5.2.1
@@ -60,6 +57,9 @@ importers:
       '@types/pg':
         specifier: ^8.16.0
         version: 8.16.0
+      dotenv:
+        specifier: ^17.2.3
+        version: 17.2.3
       eslint:
         specifier: ^9.39.2
         version: 9.39.2(jiti@2.6.1)
@@ -182,11 +182,11 @@ packages:
   '@prisma/adapter-pg@7.3.0':
     resolution: {integrity: sha512-iuYQMbIPO6i9O45Fv8TB7vWu00BXhCaNAShenqF7gLExGDbnGp5BfFB4yz1K59zQ59jF6tQ9YHrg0P6/J3OoLg==}
 
-  '@prisma/client-runtime-utils@7.3.0':
-    resolution: {integrity: sha512-dG/ceD9c+tnXATPk8G+USxxYM9E6UdMTnQeQ+1SZUDxTz7SgQcfxEqafqIQHcjdlcNK/pvmmLfSwAs3s2gYwUw==}
+  '@prisma/client-runtime-utils@7.4.1':
+    resolution: {integrity: sha512-8fy74OMYC7mt9cJ2MncIDk1awPRgmtXVvwTN2FlW4JVhbck8Dgt0wTkhPG85myfj4ZeP2stjF9Sdg12n5HrpQg==}
 
-  '@prisma/client@7.3.0':
-    resolution: {integrity: sha512-FXBIxirqQfdC6b6HnNgxGmU7ydCPEPk7maHMOduJJfnTP+MuOGa15X4omjR/zpPUUpm8ef/mEFQjJudOGkXFcQ==}
+  '@prisma/client@7.4.1':
+    resolution: {integrity: sha512-pgIll2W1NVdof37xLeyySW+yfQ4rI+ERGCRwnO3BjVOx42GpYq6jhTyuALK8VKirvJJIvImgfGDA2qwhYVvMuA==}
     engines: {node: ^20.19 || ^22.12 || >=24.0}
     peerDependencies:
       prisma: '*'
@@ -1571,11 +1571,11 @@ snapshots:
     transitivePeerDependencies:
       - pg-native
 
-  '@prisma/client-runtime-utils@7.3.0': {}
+  '@prisma/client-runtime-utils@7.4.1': {}
 
-  '@prisma/client@7.3.0(prisma@7.3.0(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)':
+  '@prisma/client@7.4.1(prisma@7.3.0(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
-      '@prisma/client-runtime-utils': 7.3.0
+      '@prisma/client-runtime-utils': 7.4.1
     optionalDependencies:
       prisma: 7.3.0(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       typescript: 5.9.3

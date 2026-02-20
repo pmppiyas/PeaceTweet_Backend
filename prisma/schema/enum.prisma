@@ -1,0 +1,14 @@
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+  SUSPENDED
+}
+
+enum ProviderType {
+  GOOGLE
+  FACEBOOK
+  GITHUB
+  CREDENTIALS
+  PHONE
+}

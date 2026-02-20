@@ -3,10 +3,9 @@ dotenv.config();
 
 import http, { Server } from "http";
 import app from './app';
-import { ENV } from './config/env';
+import { ENV } from './app/config/env';
 
 let server: Server | null = null;
-
 
 
 async function startServer() {
@@ -22,8 +21,6 @@ async function startServer() {
     process.exit(1);
   }
 }
-
-
 
 
 async function gracefulShutdown(signal: string) {
