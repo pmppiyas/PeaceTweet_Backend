@@ -1,0 +1,67 @@
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+  SUSPENDED
+}
+
+enum ProviderType {
+  GOOGLE
+  FACEBOOK
+  GITHUB
+  CREDENTIALS
+  PHONE
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String     @id @default(uuid())
+  username  String     @unique
+  password  String
+  status    UserStatus @default(ACTIVE)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  authProviders AuthProvider[]
+  profile       Profile?
+
+  @@map("users")
+}
+
+model Profile {
+  id             String    @id @default(uuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName      String
+  lastName       String?
+  profilePicture String?
+  email          String?
+  phoneNumber    String?
+  bio            String?
+  address        String?
+  workAt         String?
+  role           String?
+  website        String?
+  birthday       DateTime?
+
+  @@map("profiles")
+}
+
+model AuthProvider {
+  id         String       @id @default(uuid())
+  provider   ProviderType
+  providerId String
+  userId     String
+  user       User         @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerId])
+  @@map("auth_providers")
+}

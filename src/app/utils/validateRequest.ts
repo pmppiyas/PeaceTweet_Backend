@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import uploadToCloudinary from '@/config/cloudinary';
 import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
@@ -50,7 +49,7 @@ const validateRequest = (schema: ZodObject<any>) => {
       if (req.file) {
         const upload = await uploadToCloudinary(req.file);
         if (upload) {
-          req.body.profile.photo = upload.secure_url;
+          req.body.profile.profilePicture = upload.secure_url;
         }
       }
 
