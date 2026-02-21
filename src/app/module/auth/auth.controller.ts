@@ -7,7 +7,7 @@ import { StatusCodes } from 'http-status-codes';
 const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const result = await AuthServices.createUser(req.body);
-
+    console.log('Request Body:', req.body);
     sendResponse(res, {
       success: true,
       statusCode: StatusCodes.CREATED,
