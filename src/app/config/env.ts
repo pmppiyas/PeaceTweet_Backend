@@ -13,4 +13,5 @@ export const ENV = {
     API_SECRET: process.env.CLOUDE_API_SECRET,
   },
   BCRYPT_SALT: process.env.SALT as string,
+  JWT_SECRET: process.env.JWT_SECRET as string,
 };
