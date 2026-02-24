@@ -1,3 +1,4 @@
+import prisma from '@/config/prisma';
 import { AppError } from '@/utils/appError';
 import { verifyToken } from '@/utils/verifyToken';
 import { Request, Response, NextFunction } from 'express';
@@ -18,7 +19,21 @@ export const checkAuth = () => {
 
       const decoded = verifyToken(accessToken);
 
-      console.log('Decoded token:', decoded);
+      req.user = { ...decoded } as { userId: string; username: string };
+
+      const user = await prisma.user.findUnique({
+        where: { id: req.user.userId },
+        select: { id: true, username: true },
+      });
+
+      if (!user) {
+        throw new AppError(
+          StatusCodes.UNAUTHORIZED,
+          'Unauthorized: Invalid token'
+        );
+      }
+
+      next();
     } catch (error) {
       next(error);
     }

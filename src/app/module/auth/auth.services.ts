@@ -94,12 +94,12 @@ const credentialsLogin = async (providerId: string, password: string) => {
     throw new AppError(StatusCodes.UNAUTHORIZED, 'Password is incorrect');
   }
 
-  const { accessToken, resfreshToken } = jwtTokenGen({
+  const { accessToken, refreshToken } = jwtTokenGen({
     userId: user.id as string,
     username: user.username,
   });
 
-  return { accessToken, resfreshToken };
+  return { accessToken, refreshToken };
 };
 
 export const AuthServices = {

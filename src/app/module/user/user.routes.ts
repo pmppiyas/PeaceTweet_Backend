@@ -9,10 +9,9 @@ const router = Router();
 
 router.put(
   '/update',
-  checkAuth,
+  checkAuth(),
   upload.single('profilePhoto'),
   validateRequest(UserValidations.updateUserValidationSchema),
-
   UserController.updateUser
 );
 

@@ -1,34 +1,31 @@
 import { ENV } from '@/config/env';
-import jwt from 'jsonwebtoken';
+import jwt, { Secret, SignOptions } from 'jsonwebtoken';
 
 export const jwtTokenGen = (payload: { userId: string; username: string }) => {
   const { userId, username } = payload;
-  const accessToken = jwt.sign(
-    {
-      userId,
-      username,
-    },
-    ENV.JWT.SECRET as string,
-    {
-      algorithm: 'HS256',
-      expiresIn: ENV.JWT.ACCESS_EXPIRES_IN,
-    }
-  );
 
-  const resfreshToken = jwt.sign(
-    {
-      userId,
-      username,
-    },
-    ENV.JWT.SECRET as string,
-    {
-      algorithm: 'HS256',
-      expiresIn: ENV.JWT.REFRESH_EXPIRES_IN,
-    }
+  const jwtSecret = ENV.JWT.SECRET as Secret;
+
+  const accessOptions: SignOptions = {
+    algorithm: 'HS256',
+    expiresIn: ENV.JWT.ACCESS_EXPIRES_IN as SignOptions['expiresIn'],
+  };
+
+  const refreshOptions: SignOptions = {
+    algorithm: 'HS256',
+    expiresIn: ENV.JWT.REFRESH_EXPIRES_IN as SignOptions['expiresIn'],
+  };
+
+  const accessToken = jwt.sign({ userId, username }, jwtSecret, accessOptions);
+
+  const refreshToken = jwt.sign(
+    { userId, username },
+    jwtSecret,
+    refreshOptions
   );
 
   return {
     accessToken,
-    resfreshToken,
+    refreshToken,
   };
 };
