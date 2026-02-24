@@ -11,6 +11,12 @@ router.post(
   upload.single('profilePhoto'),
   validateRequest(AuthValidations.createUserValidationSchema),
   AuthController.createUser
-); 
+);
+
+router.post(
+  '/signin',
+  validateRequest(AuthValidations.credentialsLoginValidationSchema),
+  AuthController.credentialsLogin
+);
 
 export const authRoutes = router;

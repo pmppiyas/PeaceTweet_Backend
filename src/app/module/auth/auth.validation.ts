@@ -83,7 +83,15 @@ const updateUserValidationSchema = z.object({
   }),
 });
 
+const credentialsLoginValidationSchema = z.object({
+  body: z.object({
+    providerId: z.string().nonempty('Provider ID is required'),
+    password: z.string().min(6, 'Password must be at least 6 characters'),
+  }),
+});
+
 export const AuthValidations = {
   createUserValidationSchema,
   updateUserValidationSchema,
+  credentialsLoginValidationSchema,
 };
