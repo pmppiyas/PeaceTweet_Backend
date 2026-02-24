@@ -3,8 +3,9 @@ import uploadToCloudinary from '@/config/cloudinary';
 import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ZodObject } from 'zod';
+import { AnyZodObject } from 'zod/v3';
 
-const validateRequest = (schema: ZodObject<any>) => {
+const validateRequest = (schema: AnyZodObject) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       if (!req.body || Object.keys(req.body).length === 0) {

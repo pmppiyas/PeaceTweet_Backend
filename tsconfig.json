@@ -2,7 +2,8 @@
   "compilerOptions": {
 
     "paths": {
-      "@/*": ["./src/app/*"]
+      "@/*": ["./src/app/*"],
+      "@prisma/generated/*": ["./prisma/generated/*"]
     },
 
     "target": "es2016",

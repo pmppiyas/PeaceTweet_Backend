@@ -8,6 +8,7 @@ model User {
 
   authProviders AuthProvider[]
   profile       Profile?
+  posts         Post[]
 
   @@map("users")
 }
