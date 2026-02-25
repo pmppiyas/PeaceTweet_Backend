@@ -20,6 +20,19 @@ const createPost = catchAsync(
   }
 );
 
+const allPosts = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await PostServices.allPosts(req.query);
+
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: 'All posts retrieved successfully',
+      data: result,
+    });
+  }
+);
+
 const myPosts = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const result = await PostServices.myPosts(req.user?.userId);
@@ -33,7 +46,24 @@ const myPosts = catchAsync(
   }
 );
 
+const getPostByUserName = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await PostServices.getPostByUserName(
+      req.params.username as string
+    );
+
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: 'Posts retrieved by username successfully',
+      data: result,
+    });
+  }
+);
+
 export const PostController = {
   createPost,
   myPosts,
+  allPosts,
+  getPostByUserName,
 };

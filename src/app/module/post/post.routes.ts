@@ -17,4 +17,8 @@ router.post(
 
 router.get('/my', checkAuth(), PostController.myPosts);
 
+router.get('/all', PostController.allPosts);
+
+router.get('/:username', PostController.getPostByUserName);
+
 export const postRoutes = router;
