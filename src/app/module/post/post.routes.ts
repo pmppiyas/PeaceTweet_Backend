@@ -15,4 +15,6 @@ router.post(
   PostController.createPost
 );
 
+router.get('/my', checkAuth(), PostController.myPosts);
+
 export const postRoutes = router;

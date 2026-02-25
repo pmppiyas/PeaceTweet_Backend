@@ -27,6 +27,20 @@ const createPost = async (postData: Prisma.PostCreateInput, userId: string) => {
   return result;
 };
 
+const myPosts = async (userId: string) => {
+  const posts = await prisma.post.findMany({
+    where: {
+      userId,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return posts;
+};
+
 export const PostServices = {
   createPost,
+  myPosts,
 };
