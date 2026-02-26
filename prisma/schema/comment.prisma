@@ -13,6 +13,7 @@ model Comment {
   parentId String?
   parent   Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
   replies  Comment[] @relation("CommentReplies")
+  likes    Like[]
 
   @@map("comments")
 }

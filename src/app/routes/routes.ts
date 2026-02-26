@@ -1,5 +1,6 @@
 import { authRoutes } from '@/module/auth/auth.routes';
 import { commentRoutes } from '@/module/comment/comment.routes';
+import { likeRoutes } from '@/module/like/like.routes';
 import { postRoutes } from '@/module/post/post.routes';
 import { userRoutes } from '@/module/user/user.routes';
 import { Router } from 'express';
@@ -28,6 +29,10 @@ const allRoutes: routerArgs[] = [
   {
     path: '/comment',
     route: commentRoutes,
+  },
+  {
+    path: '/like',
+    route: likeRoutes,
   },
 ];
 

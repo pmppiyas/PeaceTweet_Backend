@@ -37,7 +37,25 @@ const deleteComment = catchAsync(
   }
 );
 
+const editComment = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await CommentServices.editComment(
+      req.user as IJwtPayload,
+      req.params.id as string,
+      req.body.content as string
+    );
+
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: 'Comment added successfully',
+      data: result,
+    });
+  }
+);
+
 export const CommentController = {
   addComment,
   deleteComment,
+  editComment,
 };

@@ -9,8 +9,8 @@ model Post {
   user   User   @relation(fields: [userId], references: [id])
 
   comments Comment[]
-
-  tags Tag[] @relation("PostTags")
+  likes    Like[]
+  tags     Tag[]     @relation("PostTags")
 
   @@map("posts")
 }

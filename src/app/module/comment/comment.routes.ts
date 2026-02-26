@@ -4,8 +4,10 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.post('/add', checkAuth(), CommentController.addComment);
+router.post('/', checkAuth(), CommentController.addComment);
 
 router.delete('/:id', checkAuth(), CommentController.deleteComment);
+
+router.patch('/:id', checkAuth(), CommentController.editComment);
 
 export const commentRoutes = router;

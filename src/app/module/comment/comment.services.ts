@@ -46,7 +46,20 @@ const deleteComment = async (user: IJwtPayload, commentId: string) => {
   return null;
 };
 
+const editComment = async (
+  user: IJwtPayload,
+  commentId: string,
+  content: string
+) => {
+  return {
+    user,
+    commentId,
+    content,
+  };
+};
+
 export const CommentServices = {
   addComment,
   deleteComment,
+  editComment,
 };
