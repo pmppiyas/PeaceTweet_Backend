@@ -3,7 +3,6 @@ import { IPostQuery } from '@/module/post/post.interface';
 import { AppError } from '@/utils/appError';
 import { Prisma } from '@prisma/generated/client';
 import { StatusCodes } from 'http-status-codes';
-import { ta } from 'zod/locales';
 
 const createPost = async (postData: Prisma.PostCreateInput, userId: string) => {
   const tagConnectOrCreate =
