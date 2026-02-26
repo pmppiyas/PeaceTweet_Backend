@@ -35,6 +35,18 @@ const addComment = async (user: IJwtPayload, payload: ICommentPayload) => {
   });
 };
 
+const deleteComment = async (user: IJwtPayload, commentId: string) => {
+  await prisma.comment.delete({
+    where: {
+      id: commentId,
+      userId: user.userId,
+    },
+  });
+
+  return null;
+};
+
 export const CommentServices = {
   addComment,
+  deleteComment,
 };
